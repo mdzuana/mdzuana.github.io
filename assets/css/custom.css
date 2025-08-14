@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Mencegah scrollbar muncul */
+    background-color: #1a1a2e; /* Warna latar belakang dasar jika kanvas belum dimuat */
+}
+
+/* Wadah untuk kanvas p5.js */
+#canvas-container {
+    position: fixed; /* Membuatnya tetap di posisi yang sama bahkan saat scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Menempatkan kanvas di belakang semua elemen lain */
+}
+
+canvas {
+    display: block; /* Menghilangkan spasi ekstra di bawah kanvas */
+}
+
+/* Styling untuk konten di atas kanvas */
+main {
+    position: relative; /* Diubah dari absolute agar flow dokumen lebih standar */
+    z-index: 1; /* Memastikan konten ini di atas kanvas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Mengisi tinggi viewport */
+    color: white;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 6rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+p {
+    font-size: 1.2rem;  
+    margin: 0;
+}
+.tab-button {
+    background-color: #04AA6D; /* Green */
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.tabs {
+    margin: 4rem 0 2rem 0;
+}
+.tabs-content {
+    display: none;
+}
+.tabs-content.active {
+    display: block;
+}
+.tab-button.active {
+    background:rgba(255,255,255,.08);
+}
+.frosted-glass {
+    width: 100%;
+    max-width: 500px; /* Lebar maksimum kartu */
+    padding: 40px;
+    color: #fff;
+    
+    /* Kunci dari efek frosted glass */
+    backdrop-filter: blur(2px) saturate(120%); /* Menerapkan filter blur ke elemen di belakangnya */
+    -webkit-backdrop-filter: blur(10px) saturate(120%); /* Dukungan untuk browser Safari */
+
+    /* Styling tambahan untuk tampilan yang lebih baik */
+    border-radius: 16px; /* Sudut yang membulat */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Border tipis semi-transparan */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Bayangan untuk efek kedalaman */
+    
+    /* Mencegah konten di dalam meluap keluar dari border radius */
+    overflow: hidden; 
+}
+
+.glass{
+    inset:50% auto auto 50%;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 16px; /* Sudut yang membulat */
+    padding: 40px;
+    background:rgba(255,255,255,.08);
+    border:2px solid transparent;
+    box-shadow:0 0 0 2px rgba(255,255,255,.6),0 16px 32px rgba(0,0,0,.12);
+    backdrop-filter:url(#frosted);
+    -webkit-backdrop-filter:url(#frosted);
+    display:grid;place-items:center;cursor:pointer;outline:0;
+  }
+
+#play{
+    width: 500px;
+}
+#contact{
+    width: 500px;
+}
