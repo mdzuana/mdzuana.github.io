@@ -10,8 +10,9 @@
 
                 this.angle = atan2(y - height / 2, x - width / 2);
 
-                this.angularSpeed = random(0.002, 0.005); // Arah putaran acak
+                this.angularSpeed = random(0.0006, 0.0003); // Arah putaran acak
 
+                this.isStatic = random() < 0.3;
 
                 this.maxAlpha = random(50, 255);
                 this.alpha = random(this.maxAlpha);
@@ -33,7 +34,9 @@
                         this.fadingIn = true;
                     }
                 }
-                this.angle += this.angularSpeed;
+                if (!this.isStatic) {
+                    this.angle += this.angularSpeed;
+                }
             }
 
             show() {
