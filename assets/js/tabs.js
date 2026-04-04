@@ -1,22 +1,30 @@
-function tabs(event, tabName) {
-    // 1. Check if the clicked tab was already active before any changes.
-  const wasActive = event.currentTarget.classList.contains('active');
+const tabs = document.querySelectorAll(".tabs-content, .tab-button")
+const clikButton = document.querySelectorAll(".tab-button")
+for (let button of clikButton) {
+  button.addEventListener("click", function () {
+    const active = button.classList.contains('active')
+    for (let content of tabs) {
+      content.classList.remove("active")
+    }
+    if (!active) {
+      document.getElementById(button.dataset.tab).classList.add("active");
+      button.classList.add("active")
+    }
+  });
+}
 
-  // 2. Reset all tabs and content by removing the 'active' class from all of them.
-  const tabContents = document.getElementsByClassName("tabs-content");
-  for (let content of tabContents) {
-    content.classList.remove("active");
-  }
-
-  const tabButtons = document.getElementsByClassName("tab-button");
-  for (let button of tabButtons) {
-    button.classList.remove("active");
-  }
-
-  // 3. If the tab was NOT active before, make it active now.
-  // If it was already active, this block is skipped, and the tab remains closed.
-  if (!wasActive) {
-    document.getElementById(tabName).classList.add("active");
-    event.currentTarget.classList.add("active");
-  }
+const headers = document.querySelectorAll(".card-header")
+const bodies = document.querySelectorAll(".card-body")
+for (let header of headers) {
+  header.addEventListener("click", function () {
+    const active = header.nextElementSibling.classList.contains("active")
+    for (let body of bodies) {
+      body.classList.remove("active")
+      header.classList.remove("active")
+    }
+    if (!active) {
+      header.nextElementSibling.classList.add("active")
+      header.classList.add("active")
+    }
+  })
 }

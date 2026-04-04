@@ -48,6 +48,9 @@ p {
     font-size:clamp(1rem, 4vw, 1.2rem);
     margin: 0;
 }
+h2{
+    margin: 0px 0px 8px 0px;
+}
 .tab-button {
     color: white;
     padding: 1rem 2rem;
@@ -56,6 +59,7 @@ p {
     text-decoration: none;
     font-size: 16px;
 }
+
 .tabs {
     margin: 2rem 0;
     display: flex;
@@ -64,6 +68,7 @@ p {
     display: none;
 }
 .tabs-content.active {
+    gap: 8px;
     display: block;
 }
 .tab-button.active {
@@ -84,15 +89,18 @@ p {
 	box-shadow: 0 0 32px 16px hsla(319, 90%, 35%, 0.75);
     backdrop-filter: blur(2px) saturate(120%);
 }
+
+.container-tabs{
+    max-width: 700px ;
+}
+
 .frosted-glass {
     width: 100%;
-    max-width: 500px; /* Lebar maksimum kartu */
-    padding: 40px;
+    padding: 24px;
     color: #fff;
     
-    /* Kunci dari efek frosted glass */
-    backdrop-filter: blur(2px) saturate(120%); /* Menerapkan filter blur ke elemen di belakangnya */
-    -webkit-backdrop-filter: blur(10px) saturate(120%); /* Dukungan untuk browser Safari */
+    backdrop-filter: blur(2px) saturate(120%); 
+    -webkit-backdrop-filter: blur(10px) saturate(120%); 
 
     /* Styling tambahan untuk tampilan yang lebih baik */
     border-radius: 16px; /* Sudut yang membulat */
@@ -117,7 +125,7 @@ p {
     display:grid;place-items:center;cursor:pointer;outline:0;
   }
 
-/* a */
+
 
 
 :root {
@@ -217,3 +225,82 @@ button svg {
 	inline-size: 1.25em;
 	translate: -25% -5%;
 }
+
+#expe .point {
+    margin: 0; 
+    position: relative;
+    z-index: 5;
+}
+
+.exp-contrainer {
+    display: flex;
+    justify-content: center; /* Membuat card berada di tengah halaman */
+    gap: 30px;
+    margin-top: 0; /* Kita atur jarak lewat card-item saja */
+    position: relative;
+}
+
+.exp-contrainer .circel{
+    height: 10px;
+    width: 10px;
+    border-radius: 10px;
+    background: #fff;
+}
+
+#expe .retangle {
+    height: 1px;
+    width: 100%;
+    background: #fff;
+}
+
+/* untuk conten card */
+.card-body{
+    display: none;
+}
+
+.card-body:is(.active) {
+    display: block;
+}
+
+.arrow {
+    --rotate: 0deg;
+    max-width: 24px;
+    padding: 8px 0 8px 0;
+    transform: rotate(var(--rotate))
+}
+
+.card-header.active .arrow {
+    --rotate: 180deg;
+}
+
+
+.card-item {
+    position: relative;
+    width: 100%;
+    max-width: 400px; /* Atur lebar maksimal card agar tidak terlalu lebar */
+    margin-top: 30px; /* Jarak antara garis ke kotak card */
+}
+
+.card-item .circle {
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    
+    /* JARAK: top harus negatif sama dengan margin-top card-item */
+    /* Jika margin-top: 30px, maka top: -30px (dikurangi sedikit agar pas di tengah garis) */
+    top: -36px; 
+    
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+} 
+
+.card-exp.frosted-glass{
+    padding: 12px 24px 12px 24px;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+}
+

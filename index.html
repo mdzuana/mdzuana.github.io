@@ -1,69 +1,154 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" href="assets/img/logg.png">
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="assets/img/logg.png">
 
   <meta name="google-site-verification" content="szbCLkyXFr0HJr5SAAbJPYiU5qRf1FvtrKfn3DOHfQ4" />
-	<title>NEW Portofolio</title>
+  <title>NEW Portofolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-  <link href="assets\css\custom.css" rel="stylesheet" /> 
-  <script src="assets\js\sketch.js"></script> 
-  <script src="assets\js\tabs.js"></script> 
+
+  <link href="assets\css\custom.css" rel="stylesheet" />
+  <script src="assets\js\sketch.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.js"></script>
-    
+
 </head>
 
 <body>
-   <!-- Wadah khusus untuk kanvas p5.js -->
+  <!-- Wadah khusus untuk kanvas p5.js -->
   <div id="canvas-container"></div>
 
-   <!-- Konten utama halaman web Anda, yang akan muncul di atas kanvas -->
+  <!-- Konten utama halaman web Anda, yang akan muncul di atas kanvas -->
   <main class="container">
     <div class="porfile">
-      <h1>Munazir Dzuana</h1>
-      <p>Sofware Developer &middot; Web Developer &#183; Mobile Developer &#183; AND  </p>
+      <h1>[Name]</h1>
+      <p>Sofware Developer &middot; Web Developer &#183; Mobile Developer &#183; AND </p>
     </div>
     <div class="tabs">
-        <button class="tab-button" onclick="tabs(event, 'exp')">
-          Experience
-        </button>
-        <button class="tab-button" onclick="tabs(event, 'play')">
-          Playground</button>
-        <button class="tab-button" onclick="tabs(event, 'contact')">
-          Contact</button>
-    </div> 
-    <div class="container-tabs"> 
-    <div id="exp" class="tabs-content frosted-glass">
-      <h2>Experience</h2>
-      <p>Developed and improved the front-end web digitalpass.id is a service to ensure the quality of digital products
-        Utilizing Vue.js and Nuxt.js to build a responsive user interface based on Figma's design.
-        Resolved a range of evaluation team findings, from minor issues to critical vulnerabilities.
-        Collaborated with team digitalpass within an Agile development environment.
-        Followed coding best practices to ensure maintainable code.
-        This experience gave me a deep understanding of the importance of teamwork, effective communication, and adaptation of dynamic technical challenges.
-        Tech stack : Javascript, Nuxt, Jira, Figma, Git.
+      <button class="tab-button" data-tab="expe">
+        Experience
+      </button>
+      <button class="tab-button" data-tab="play">
+        Playground</button>
+      <button class="tab-button" data-tab="contact">
+        Contact</button>
+    </div>
+    <div class="container-tabs">
+      <div id="expe" class="tabs-content frosted-glass">
+        <h2>Experience</h2>
+        <div class="point">
+          <div class="retangle"></div>
+        </div>
+        <div class="exp-contrainer">
+          <div class="card-item">
+            <div class="circle"></div>
+            <div class="card-exp frosted-glass">
+              <div class="card-header">
+                <div class="job"> FE
+                  <span class="perusahaan"> - [company A]</span>
+                  <div class="tgl">1 april - 1 september</div>
+                </div>
+                <div class="tech-stack">Tech stack : Javascript, Nuxt, Jira, Figma, Git.</div>
+                <img src="assets/img/arrow.svg" class="arrow">
+              </div>
+              <div class="card-body">
+                <div class="desc-perusahaan">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eros mauris, suscipit non luctus a,
+                    vulputate id ipsum. Nunc pharetra auctor nunc, sit amet suscipit quam. Aenean in scelerisque ligula.
+                    Suspendisse facilisis vel augue vel pellentesque. Quisque vel ligula eu libero elementum elementum
+                    vitae sit amet velit. Proin ac porta libero. Sed vestibulum sed eros sit amet rhoncus. Integer
+                    tincidunt congue ipsum sit amet placerat. Nunc sapien tellus, porttitor at dui sit amet, iaculis
+                    iaculis mi. Quisque venenatis auctor mattis. Morbi ornare urna et mauris congue, non luctus dolor
+                    ultrices. Ut tincidunt sodales urna, a elementum urna aliquam nec. Morbi elementum porttitor semper.
+                    Sed dapibus fermentum lacinia. Maecenas gravida neque a ipsum consequat, ac sodales lectus
+                    malesuada.
+                    Aliquam pharetra, orci aliquet euismod aliquet, ligula justo fermentum nunc, quis viverra elit neque
+                    sit amet orci.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-item">
+            <div class="circle"></div>
+            <div class="card-exp frosted-glass">
+              <div class="card-header">
+                <div class="job"> FE
+                  <span class="perusahaan"> - [company A]</span>
+                  <div class="tgl">1 april - 1 september</div>
+                </div>
+                <div class="tech-stack">Tech stack : Javascript, Nuxt, Jira, Figma, Git.</div>
+                <img src="assets/img/arrow.svg" class="arrow">
+              </div>
+              <div class="card-body">
+                <div class="desc-perusahaan">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eros mauris, suscipit non luctus a,
+                    vulputate id ipsum. Nunc pharetra auctor nunc, sit amet suscipit quam. Aenean in scelerisque ligula.
+                    Suspendisse facilisis vel augue vel pellentesque. Quisque vel ligula eu libero elementum elementum
+                    vitae sit amet velit. Proin ac porta libero. Sed vestibulum sed eros sit amet rhoncus. Integer
+                    tincidunt congue ipsum sit amet placerat. Nunc sapien tellus, porttitor at dui sit amet, iaculis
+                    iaculis mi. Quisque venenatis auctor mattis. Morbi ornare urna et mauris congue, non luctus dolor
+                    ultrices. Ut tincidunt sodales urna, a elementum urna aliquam nec. Morbi elementum porttitor semper.
+                    Sed dapibus fermentum lacinia. Maecenas gravida neque a ipsum consequat, ac sodales lectus
+                    malesuada.
+                    Aliquam pharetra, orci aliquet euismod aliquet, ligula justo fermentum nunc, quis viverra elit neque
+                    sit amet orci.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-item">
+            <div class="circle"></div>
+            <div class="card-exp frosted-glass">
+              <div class="card-header">
+                <div class="job"> FE
+                  <span class="perusahaan"> - [company A]</span>
+                  <div class="tgl">1 april - 1 september</div>
+                </div>
+                <div class="tech-stack">Tech stack : Javascript, Nuxt, Jira, Figma, Git.</div>
+                <img src="assets/img/arrow.svg" class="arrow">
+              </div>
+              <div class="card-body">
+                <div class="desc-perusahaan">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eros mauris, suscipit non luctus a,
+                    vulputate id ipsum. Nunc pharetra auctor nunc, sit amet suscipit quam. Aenean in scelerisque ligula.
+                    Suspendisse facilisis vel augue vel pellentesque. Quisque vel ligula eu libero elementum elementum
+                    vitae sit amet velit. Proin ac porta libero. Sed vestibulum sed eros sit amet rhoncus. Integer
+                    tincidunt congue ipsum sit amet placerat. Nunc sapien tellus, porttitor at dui sit amet, iaculis
+                    iaculis mi. Quisque venenatis auctor mattis. Morbi ornare urna et mauris congue, non luctus dolor
+                    ultrices. Ut tincidunt sodales urna, a elementum urna aliquam nec. Morbi elementum porttitor semper.
+                    Sed dapibus fermentum lacinia. Maecenas gravida neque a ipsum consequat, ac sodales lectus
+                    malesuada.
+                    Aliquam pharetra, orci aliquet euismod aliquet, ligula justo fermentum nunc, quis viverra elit neque
+                    sit amet orci.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 
+        </p> -->
+        </div>
+        <a href="#">Tombol zoom</a>
+      </div>
+      <div id="play" class="tabs-content frosted-glass">
+        <h2>Playground</h2>
+        <p>Still on progres
         </p>
-      <a href="#">Tombol zoom</a>
+        <a href="#">Tombol Contoh</a>
+      </div>
+      <div id="contact" class="tabs-content frosted-glass">
+        <h2>Reach Me</h2>
+        <p>my contact</p>
+        <a href="#">Tombol Contoh</a>
+      </div>
     </div>
-    <div id="play" class="tabs-content frosted-glass">
-      <h2>Playground</h2>
-      <p>Still on 
-        m minor issues to critical vulnerabilities.
-        Collaborated with team digitalpass within an Agile development environment.
-        Followed coding best practices to ensure maintainable code.
-        This experience gave m
-      </p>
-      <a href="#">Tombol Contoh</a>
-    </div>
-    <div id="contact" class="tabs-content frosted-glass">
-      <h2>Reach Me</h2> 
-      <p>my contact</p>
-      <a href="#">Tombol Contoh</a>
-    </div>
-  </div>
   </main>
+  <script src="assets\js\tabs.js"></script>
 </body>
+
 </html>
