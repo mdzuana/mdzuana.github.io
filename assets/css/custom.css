@@ -68,7 +68,6 @@ h2{
     display: none;
 }
 .tabs-content.active {
-    gap: 8px;
     display: block;
 }
 .tab-button.active {
@@ -91,7 +90,7 @@ h2{
 }
 
 .container-tabs{
-    max-width: 700px ;
+    max-width: 800px ;
 }
 
 .frosted-glass {
@@ -235,7 +234,7 @@ button svg {
 .exp-contrainer {
     display: flex;
     justify-content: center; /* Membuat card berada di tengah halaman */
-    gap: 30px;
+    gap: 16px;
     margin-top: 0; /* Kita atur jarak lewat card-item saja */
     position: relative;
 }
@@ -253,6 +252,8 @@ button svg {
     background: #fff;
 }
 
+
+
 /* untuk conten card */
 .card-body{
     display: none;
@@ -269,16 +270,16 @@ button svg {
     transform: rotate(var(--rotate))
 }
 
-.card-header.active .arrow {
-    --rotate: 180deg;
+.card-header .job {
+    font-size: 24px;
 }
 
 
 .card-item {
     position: relative;
     width: 100%;
-    max-width: 400px; /* Atur lebar maksimal card agar tidak terlalu lebar */
-    margin-top: 30px; /* Jarak antara garis ke kotak card */
+    max-width: 400px;
+    margin-top: 12px; 
 }
 
 .card-item .circle {
@@ -287,10 +288,7 @@ button svg {
     background-color: #fff;
     border-radius: 50%;
     position: absolute;
-    
-    /* JARAK: top harus negatif sama dengan margin-top card-item */
-    /* Jika margin-top: 30px, maka top: -30px (dikurangi sedikit agar pas di tengah garis) */
-    top: -36px; 
+    top: -18px; 
     
     left: 50%;
     transform: translateX(-50%);
@@ -304,3 +302,10 @@ button svg {
     width: 100%;
 }
 
+.title{
+    margin-bottom: 16px;
+}
+
+.date{
+    margin-bottom: 8px;
+}
