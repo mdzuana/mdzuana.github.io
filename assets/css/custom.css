@@ -1,8 +1,86 @@
 *,
 *:after,
 *:before {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
+
+/* ===== ROOT VARIABLES ===== */
+:root {
+  /* Warna background */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f5f5f5;
+  --color-bg-tertiary: #eeeeee;
+
+  /* Warna teks */
+  --color-text-primary: #111111;
+  --color-text-secondary: #555555;
+  --color-text-muted: #bdbdbd;
+
+  /* Brand */
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-primary-light: #dbeafe;
+
+  /* Semantik */
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-border: rgba(0,0,0,0.12);
+
+  /* Tipografi */
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Georgia', serif;
+  --font-mono: 'Fira Code', monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-bold: 700;
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-loose: 1.75;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.1);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,.12);
+
+  /* Z-index */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+
+  /* Animasi */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --ease-out: cubic-bezier(0,0,0.2,1);
+  --ease-in-out: cubic-bezier(0.4,0,0.2,1);
+  --ease-bounce: cubic-bezier(0.34,1.56,0.64,1);
+  --transition-base: all 250ms cubic-bezier(0.4,0,0.2,1);
+  --transition: 0.25s;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -10,31 +88,38 @@ body {
 
 /* Wadah untuk kanvas p5.js */
 #canvas-container {
-    position: fixed; /* Membuatnya tetap di posisi yang sama bahkan saat scroll */
+    position: fixed;
+    /* Membuatnya tetap di posisi yang sama bahkan saat scroll */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Menempatkan kanvas di belakang semua elemen lain */
+    z-index: -1;
+    /* Menempatkan kanvas di belakang semua elemen lain */
 }
 
 canvas {
-    display: block; /* Menghilangkan spasi ekstra di bawah kanvas */
+    display: block;
+    /* Menghilangkan spasi ekstra di bawah kanvas */
 }
 
 /* Styling untuk konten di atas kanvas */
 main {
-    position: relative; /* Diubah dari absolute agar flow dokumen lebih standar */
-    z-index: 1; /* Memastikan konten ini di atas kanvas */
+    position: relative;
+    /* Diubah dari absolute agar flow dokumen lebih standar */
+    z-index: 1;
+    /* Memastikan konten ini di atas kanvas */
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Mengisi tinggi viewport */
+    min-height: 100vh;
+    /* Mengisi tinggi viewport */
     color: white;
     font-family: 'Inter', sans-serif;
     text-align: center;
     flex-direction: column;
-    padding: 2rem 1rem;
+    gap: 1rem;
+    margin: 4px;
 }
 
 h1 {
@@ -45,201 +130,191 @@ h1 {
 }
 
 p {
-    font-size:clamp(1rem, 4vw, 1.2rem);
+    font-size: clamp(1rem, 4vw, 1.2rem);
     margin: 0;
 }
-h2{
+
+h2 {
     margin: 0px 0px 8px 0px;
 }
+
 .tab-button {
     color: white;
     padding: 1rem 2rem;
-	margin: 0 1rem;
-    text-align: center;
     text-decoration: none;
     font-size: 16px;
+    justify-content: center;
 }
 
 .tabs {
-    margin: 2rem 0;
-    display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* sama rata */
+  gap: var(--space-4);
+  margin-bottom: 1.5rem;
 }
+
+@media (max-width: 480px) {
+  .tabs { grid-template-columns: 1fr; }
+}
+
+
 .tabs-content {
-    display: none;
+  display: none;
+  height: 100%;
+  max-height: inherit;    /* ikut max-height container */
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
+
 .tabs-content.active {
     display: block;
 }
+
+
+.tabs-content::-webkit-scrollbar       { width: 4px; }
+.tabs-content::-webkit-scrollbar-track { background: transparent; }
+
 .tab-button.active {
-	--bg:
-    radial-gradient(
-        40% 50% at center 100%,
-        hsl(270 calc(var(--active) * 97%) 72% / var(--active)),
-        transparent
-    ),
-    radial-gradient(
-        80% 100% at center 120%,
-        hsl(260 calc(var(--active) * 97%) 70% / var(--active)),
-        transparent
-    ),
-    hsl(316 calc(var(--active) * 93%) calc((var(--active) * 23%) + 12%)/ var(--active));
-	background: var(--bg);
-	border:0;
-	box-shadow: 0 0 32px 16px hsla(319, 90%, 35%, 0.75);
+    --bg:
+        radial-gradient(40% 50% at center 100%,
+            hsl(270 calc(var(--active) * 97%) 72% / var(--active)),
+            transparent),
+        radial-gradient(80% 100% at center 120%,
+            hsl(260 calc(var(--active) * 97%) 70% / var(--active)),
+            transparent),
+        hsl(316 calc(var(--active) * 93%) calc((var(--active) * 23%) + 12%)/ var(--active));
+    background: var(--bg);
+    border: 0;
+    box-shadow: 0 0 32px 16px hsla(319, 90%, 35%, 0.75);
     backdrop-filter: blur(2px) saturate(120%);
 }
 
-.container-tabs{
-    max-width: 800px ;
+.container-tabs {
+  max-width: 800px;
+  max-height: 75vh;
+  width: 100%;     
 }
 
 .frosted-glass {
     width: 100%;
     padding: 24px;
     color: #fff;
-    
-    backdrop-filter: blur(2px) saturate(120%); 
-    -webkit-backdrop-filter: blur(10px) saturate(120%); 
+
+    backdrop-filter: blur(2px) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%);
 
     /* Styling tambahan untuk tampilan yang lebih baik */
-    border-radius: 16px; /* Sudut yang membulat */
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Border tipis semi-transparan */
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Bayangan untuk efek kedalaman */
-    
+    border-radius: 16px;
+    /* Sudut yang membulat */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* Border tipis semi-transparan */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    /* Bayangan untuk efek kedalaman */
+
     /* Mencegah konten di dalam meluap keluar dari border radius */
-    overflow: hidden; 
+    overflow: hidden;
 }
 
-.glass{
-    inset:50% auto auto 50%;
-    width: 100%;
-    max-width: 500px;
-    border-radius: 16px; /* Sudut yang membulat */
-    padding: 40px;
-    background:rgba(255,255,255,.08);
-    border:2px solid transparent;
-    box-shadow:0 0 0 2px rgba(255,255,255,.6),0 16px 32px rgba(0,0,0,.12);
-    backdrop-filter:url(#frosted);
-    -webkit-backdrop-filter:url(#frosted);
-    display:grid;place-items:center;cursor:pointer;outline:0;
-  }
-
-
-
-
-:root {
-	--transition: 0.25s;
-	--spark: 1.8s;
-}
-
-
-button {
-	--cut: 0.1em;
-	--active: 0;
+button.tab-button {
+    --cut: 0.1em;
+    --active: 0;
     --activeState: 0.5px;
-	--bg:
-    radial-gradient(
-        40% 50% at center 100%,
-        hsl(270 calc(var(--active) * 97%) 72% / var(--active)),
-        transparent
-    ),
-    radial-gradient(
-        80% 100% at center 120%,
-        hsl(260 calc(var(--active) * 97%) 70% / var(--active)),
-        transparent
-    ),
-    hsl(316 calc(var(--active) * 93%) calc((var(--active) * 23%) + 12%)/ var(--active) );
-	background: var(--bg);
-	font-size: 2rem;
-	font-weight: 500;
+    --bg:
+        radial-gradient(40% 50% at center 100%,
+            hsl(270 calc(var(--active) * 97%) 72% / var(--active)),
+            transparent),
+        radial-gradient(80% 100% at center 120%,
+            hsl(260 calc(var(--active) * 97%) 70% / var(--active)),
+            transparent),
+        hsl(316 calc(var(--active) * 93%) calc((var(--active) * 23%) + 12%)/ var(--active));
+    background: var(--bg);
     border: solid;
-    border-width:  var(--activeState);
-	cursor: pointer;
-	padding: 0.9em 1.3em;
-	display: flex;
-	align-items: center;
-	gap: 0.25em;
-	white-space: nowrap;
-	border-radius: 100px;
-	position: relative;
-	box-shadow:
-		0 0 calc(var(--active) * 6em) calc(var(--active) * 3em) hsla(319, 90%, 35%, 0.75);   
-	transition: box-shadow var(--transition), scale var(--transition), background var(--transition);
-	scale: calc(1 + (var(--active) * 0.1));
+    border-width: var(--activeState);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
+    white-space: nowrap;
+    border-radius: 100px;
+    position: relative;
+    box-shadow:
+        0 0 calc(var(--active) * 6em) calc(var(--active) * 3em) hsla(319, 90%, 35%, 0.75);
+    transition: box-shadow var(--transition), scale var(--transition), background var(--transition);
+    scale: calc(1 + (var(--active) * 0.1));
 }
 
 button:active {
-  scale: 1;
+    scale: 1;
 }
 
 button:is(:hover, :focus-visible) path {
-	animation-name: bounce;
+    animation-name: bounce;
 }
 
 @keyframes bounce {
-	35%, 65% {
-		scale: var(--scale);
-	}
-}
 
-button:is(:hover, :focus-visible){
-	--active: 1;
-    --activeState: 0px;
-	--play-state: runnin;
-}
-
-.bodydrop {
-	background: hsl(
-		260
-		97
-		6%
-	);
-	border-radius: 100px;
-	position: fixed;
-	inset: 0;
-	z-index: -1
+    35%,
+    65% {
+        scale: var(--scale);
+    }
 }
 
 button:is(:hover, :focus-visible) {
-	--active: 1;
-	--play-state: running;
+    --active: 1;
+    --activeState: 0px;
+    --play-state: runnin;
+}
+
+.bodydrop {
+    background: hsl(260 97 6%);
+    border-radius: 100px;
+    position: fixed;
+    inset: 0;
+    z-index: -1
+}
+
+button:is(:hover, :focus-visible) {
+    --active: 1;
+    --play-state: running;
 }
 
 
 @keyframes float-out {
-	to {
-		rotate: 360deg;
-	}
+    to {
+        rotate: 360deg;
+    }
 }
 
 .text {
-	translate: 2% -6%;
-	background: hsl(0 0% calc((var(--active) * 100%) + 65%));
-	-webkit-background-clip: text;  
-	color: transparent;
-	transition: background var(--transition);
+    translate: 2% -6%;
+    background: hsl(0 0% calc((var(--active) * 100%) + 65%));
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: background var(--transition);
 }
 
 button svg {
-	inline-size: 1.25em;
-	translate: -25% -5%;
+    inline-size: 1.25em;
+    translate: -25% -5%;
 }
 
 #expe .point {
-    margin: 0; 
+    margin: 0;
     position: relative;
     z-index: 5;
 }
 
 .exp-contrainer {
     display: flex;
-    justify-content: center; /* Membuat card berada di tengah halaman */
+    justify-content: center;
+    /* Membuat card berada di tengah halaman */
     gap: 16px;
-    margin-top: 0; /* Kita atur jarak lewat card-item saja */
+    margin-top: 0;
+    /* Kita atur jarak lewat card-item saja */
     position: relative;
 }
 
-.exp-contrainer .circel{
+.exp-contrainer .circel {
     height: 10px;
     width: 10px;
     border-radius: 10px;
@@ -252,15 +327,35 @@ button svg {
     background: #fff;
 }
 
-
-
-/* untuk conten card */
-.card-body{
-    display: none;
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
 }
 
-.card-body:is(.active) {
-    display: block;
+.controls button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* untuk conten card */
+.card-exp .card-body {
+  display: none;
+}
+
+.card-exp.active .card-body {
+  display: block;
+  margin-top: var(--space-4);
+  text-align: justify;
+
+  max-height: 350px;    
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .arrow {
@@ -270,16 +365,82 @@ button svg {
     transform: rotate(var(--rotate))
 }
 
-.card-header .job {
-    font-size: 24px;
+.card-header.active .arrow {
+    --rotate: 180deg;
+}
+
+.card-header {
+    display: grid;
+    gap: 8px;
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.job {
+    font-weight: var(--font-bold);
+    font-size: var(--text-lg);
+}
+
+.comp {
+    font-size: var(--text-sm);
+}
+
+.nav-arrow {
+    border: none;
+    color: #d946ef;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Keep the inner icon background transparent */
+.nav-arrow svg,
+.nav-arrow i {
+    background: transparent !important;
+}
+
+.card-exp:not(.active) .prev-arrow,
+.card-exp:not(.active) .next-arrow {
+  display: none;
+}
+
+.card-exp.active.is-last .next-arrow {
+  visibility: hidden;
+}
+.card-exp.active.is-first .prev-arrow {
+  visibility: hidden;
+}
+
+.nav-arrow svg {
+    width: 18px;
+    height: 18px;
 }
 
 
 .card-item {
     position: relative;
     width: 100%;
-    max-width: 400px;
-    margin-top: 12px; 
+    margin-top: 12px;
+}
+
+.card-exp.active{
+    display: grid;
+    gap: 16px;
+    grid-auto-flow: column;
 }
 
 .card-item .circle {
@@ -288,24 +449,140 @@ button svg {
     background-color: #fff;
     border-radius: 50%;
     position: absolute;
-    top: -18px; 
-    
+    top: -18px;
+
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
-} 
+}
 
-.card-exp.frosted-glass{
+.card-exp.frosted-glass {
     padding: 12px 24px 12px 24px;
     position: relative;
     z-index: 10;
     width: 100%;
+    height: 100%;
 }
 
-.title{
+.card-exp.active .card-content{
+    display: block;
+    align-items: stretch;
+    height: 100%;
+}
+
+.card-content{
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+    justify-content: center;
+}
+
+.title {
     margin-bottom: 16px;
 }
 
-.date{
+.date {
     margin-bottom: 8px;
+}
+
+.tech-text {
+    display: inline;
+    font-size: var(--text-xs);
+    
+}
+
+.tech-stack{
+    color: #93c5fd;
+}
+
+ .tech-stack{
+    border: none;
+}
+
+.tech-badges {
+    display: none;
+}
+
+.card-exp.active .tech-text {
+    display: none;
+}
+
+.card-exp.active .tech-badges {
+    display: inline;
+}
+
+.card-exp.active .job {
+    font-size: var(--text-2xl);
+}
+
+.tech-badge{
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    padding: 4px 10px;
+    border-radius: 99px;
+    font-size: 0.7rem;
+    color: #93c5fd;
+    margin-right: 4px;
+}
+
+.card-footer{
+    display: none;
+}
+
+.card-exp.active .card-footer {
+    display: block;
+    margin: var(--space-4);
+}
+
+.glow-effect {
+    background-color: hsla(319, 90%, 35%, 0);
+    scale: 1;
+    box-shadow:
+        0 0 0 0 hsla(319, 90%, 35%, 0),
+        inset 0 0 0 0 hsla(319, 90%, 35%, 0);
+
+    transition: box-shadow 0.3s ease, background-color 0.3s ease, scale 0.3s ease;
+}
+
+.glow-effect:hover {
+    scale: 1.1;
+    background-color: hsla(319, 90%, 35%, 0.15);
+
+    box-shadow:
+        0 0 6em 3em hsla(319, 90%, 35%, 0.75),
+        inset 0 0 1.5em 0.5em hsla(319, 90%, 35%, 0.6);
+}
+
+.glow-effect:active {
+    scale: 0.95;
+    box-shadow:
+        0 0 6px 1px hsla(319, 90%, 35%, 0.4),
+        inset 0 0 10px 3px hsla(319, 90%, 35%, 0.3);
+}
+
+.card-footer button{
+    background: transparent;
+    border: solid;
+    padding: 12px;
+    border-width: 0.5px;
+    border-radius: 99px;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.muted-text{
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+}
+
+.desc-perusahaan ul {
+  padding-left: 1.2rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.desc-perusahaan li {
+  line-height: 1.6;
 }
