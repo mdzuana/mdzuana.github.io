@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="assets/img/logg.png">
 
   <meta name="google-site-verification" content="szbCLkyXFr0HJr5SAAbJPYiU5qRf1FvtrKfn3DOHfQ4" />
-  <title>NEW Portofolio</title>
+  <title>Muns Portofolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link href="assets\css\custom.css" rel="stylesheet" />
@@ -23,8 +23,8 @@
   <!-- Konten utama halaman web Anda, yang akan muncul di atas kanvas -->
   <main class="container">
     <div class="profile">
-      <h1>my name</h1>
-      <p>&middot; Front-End Developer &middot;</p>
+      <h1>Munazir Dzuana Setiawan</h1>
+      <p>&middot; Software Developer &middot;</p>
     </div>
     <div class="tabs">
       <button class="tab-button" data-tab="expe">
@@ -33,9 +33,10 @@
       <button class="tab-button" data-tab="play">
         Playground</button>
       <button class="tab-button" data-tab="contact">
-        Contact</button>
+        Reach Me</button>
     </div>
     <div class="container-tabs">
+
       <div id="expe" class="tabs-content frosted-glass">
         <h2 class="title">Internship Experience</h2>
         <div class="point">
@@ -46,21 +47,37 @@
         </p> -->
         </div>
       </div>
-      <div id="play" class="tabs-content frosted-glass">
-        <h2>Playground</h2>
-        <p>Still on progres
-        </p>
-        <a href="#">Tombol Contoh</a>
+
+      <!-- --------------------------------------------------------------------- -->
+      <div id="play" class="tabs-content">
+        <div class="filter-bar">
+            <div class="filter-pill active" onclick="filterCards('all', this)">All</div>
+            <div class="filter-pill" onclick="filterCards('web', this)">Web</div>
+            <div class="filter-pill" onclick="filterCards('mobile', this)">Mobile</div>
+            <div class="filter-pill" onclick="filterCards('ai', this)">Ai</div>
+            <div class="filter-pill" onclick="filterCards('tools', this)">Tools</div>
+        </div>
+        <div class="play-container" id="play-content">
+          <!-- pill shortcut all-android-web-ai -->
+          
+        </div>
       </div>
+
+
+      <!-- --------------------------------------------------------------------- -->
       <div id="contact" class="tabs-content frosted-glass">
-        <h2>Reach Me</h2>
-        <p>my contact</p>
-        <a href="#">Tombol Contoh</a>
+        <div class="container" id="-content">
+          <!-- pill shortcut all-android-web-ai -->
+          <h2>Reach Me</h2>
+          <p>my contact</p>
+          <a href="#">Tombol Contoh</a>
+        </div>
       </div>
     </div>
-  </main>  
+  </main>
   <script src="assets\js\contentWork.js"></script>
-    <script src="assets\js\tabs.js"></script>
+  <script src="assets\js\contentPlayground.js"></script>
+  <script src="assets\js\tabs.js"></script>
 </body>
 
 </html>

@@ -103,3 +103,50 @@ nextButtons.forEach(button => {
     if (expandedIndex < cardItems.length - 1) showCard(expandedIndex + 1)
   })
 })
+
+function toggleCard(card) {
+  const inner = card.querySelector('.expanded-inner');
+  const isExpanded = card.classList.contains('expanded');
+
+  // 1. Reset semua secara INSTAN (tanpa delay)
+  document.querySelectorAll('.proj-card').forEach(c => {
+    c.classList.remove('expanded');
+    c.style.gridColumn = '';
+    c.style.gridRow = '';
+    
+    const i = c.querySelector('.expanded-inner');
+    if(i) i.style.height = '0px'; // Kembalikan tinggi ke 0 seketika
+  });
+
+  // 2. Buka card yang diklik
+  if (!isExpanded) {
+    // Set ukuran grid baru secara instan
+    card.style.gridColumn = 'span 2';
+    card.style.gridRow = 'span 3';
+    card.classList.add('expanded');
+
+    // Gunakan requestAnimationFrame agar browser me-render grid baru dulu,
+    // baru kemudian kita setel tingginya untuk memicu animasi CSS.
+    requestAnimationFrame(() => {
+      // scrollHeight akan mengambil tinggi asli konten yang ada di dalamnya
+      inner.style.height = inner.scrollHeight + 'px';
+    });
+  }
+}
+
+ function filterCards(cat, pill) {
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  pill.classList.add('active');
+  document.querySelectorAll('.proj-card').forEach(card => {
+    const show = cat === 'all' || card.dataset.cat === cat;
+    card.style.display = show ? '' : 'none';
+    if (card.classList.contains('expanded')) {
+      card.classList.remove('expanded');
+      card.style.gridColumn = '';
+      card.style.gridRow = '';
+      
+      const inner = card.querySelector('.expanded-inner');
+      if (inner) inner.style.height = '0px';
+    }
+  });
+}
